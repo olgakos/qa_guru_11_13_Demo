@@ -22,7 +22,7 @@
 <a href="https://aerokube.com/selenoid/"><img src="images/logo/Selenoid.svg" width="50" height="50"  alt="Selenoid"/></a>
 <a href="https://github.com/allure-framework/allure2"><img src="images/logo/Allure.svg" width="50" height="50"  alt="Allure"/></a>
 <a href="https://www.jenkins.io/"><img src="images/logo/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>
-<a href="https://www.хххх/"><img width="50" height="50"  alt="Telegram" src="images/logo/Telegram.svg">
+<a href="https://www.хххх/"><img width="50" height="50"  alt="Telegram" src="images/logo/Telegram.svg"></a>
 </p>
 
 
@@ -39,14 +39,15 @@
 - После завершения прогона тестов, специальный `Telegram Bot` отправляются в `Telegram` краткий вариант Allure Report 
 
 ## :watermelon: Реализованные проверки (Примеры UI тестов)
-- провекрка текста 
-- ✓ запоелнре формы обратной связи
-- поиск товара в каталоге
+- ✓ проверка текста 
+- ✓ заполнение формы обратной связи
+- ✓ поиск товара в каталоге
+- ✓ хххххххххххх
+- ✓ ххххххххххх
 
 ## :watermelon: Запуск тестов из терминала
-
 Шаги:
-1. Перейтиде в комнадную строку терминала (Можно использовать терминал, встроенный в среду разработки, термнал вашего компьютра)
+1. Перейтиде в комнадную строку терминала
 2. Запустите на выполение команду:
 
 ###### Локальный запуск:
