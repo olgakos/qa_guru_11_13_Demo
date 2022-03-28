@@ -7,7 +7,7 @@
 - [ Запуск тестов (сборка) в Jenkins с параметрами](#watermelon-Запуск-тестов(сборка)-в-Jenkins-с-параметрами)
 - [Запуск из терминала](#watermelon-Запуск-тестов-из-терминала)
 - [Allure отчет](#watermelon-Allure-отчет)
-- [Отчет в Telegram](#watermelon-Уведомление-в-Telegram-при-помощи-бота)
+- [Отчет в Telegram](#watermelon-Отчет-в-Telegram)
 - [Видео примеры прохождения тестов](#watermelon-Примеры-видео-о-прохождении-тестов)
 
 ## :watermelon: Технологии и инструменты
@@ -115,9 +115,9 @@ test
 <img title="Видео прохождения тестов на Selenoid" src="images/screens/Screenshot_ХХХ.png">
 </p>
 
-## :bellhop_bell: <img src="images/logo/Telegram.svg" width="25" height="25"  alt="Telegram"/></a> Уведомление в Telegram при помощи бота
-После завершения сборки специальный Telegram-бот, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне тестов.
-Чтобы после запуска тестов получть уведомление, встепите в групп ***
+## :bellhop_bell: Отчет в Telegram
+После завершения сборки специальный Telegram-бот отправляет сообщение с отчетом о прогоне тестов.
+Чтобы увидеть сообщение от бота, вступите в группу  ХХХХХХХХХХХХХХХХХХХХХХХХХХХХХХХХХ
 
 <p align="center">
 <img title="Telegram Bot" src="images/screens/Screenshot_ХХХ.png">
