@@ -7,8 +7,8 @@
 - [Запуск из терминала](#watermelon-Запуск-тестов-из-терминала)
 - [Запуск тестов в Jenkins](#watermelon-Запуск-тестов-в-Jenkins)
 - [Видео прохождения тестов](#watermelon-Видео-прохождения-тестов)
-- [Allure отчет](#watermelon-Allure-отчет)
-- [Отчет в Telegram](#watermelon-Отчет-в-Telegram)
+- [Allure отчет](#bellhop_bell-Allure-отчет)
+- [Отчет в Telegram](#bellhop_bell-Отчет-в-Telegram)
 
 
 ## :watermelon: Технологии и инструменты
@@ -91,7 +91,7 @@ test
 <img title="Видео прохождения тестов на Selenoid" src="images/screens/Screenshot_ХХХ.png">
 </p>
 
- ## :watermelon: Allure отчет 
+ ## :bellhop_bell: Allure отчет 
 После того как тесты завершлись, можно получить визуальный Allure отчет.
 Способ 1: Найти ссылку в среде разработки IDEA (в папке Allure Serve)
 Способ 2: 
