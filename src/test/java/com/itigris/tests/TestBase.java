@@ -44,9 +44,15 @@ public class TestBase {
         Attach.browserConsoleLogs();
     }
 
+    @AfterEach
+    void closeBrowser() {
+        closeWebDriver();
+    }
+
+    /*
     @AfterAll
     public static void afterAll() {
         closeWebDriver();
     }
-
+     */
 }
