@@ -80,8 +80,8 @@ public class itigrisBasicTests extends TestBase {
     }
 
     @Tag("marketTests")
-    @DisplayName("Поиск 2 товаров")
-    @ParameterizedTest(name = "Поиск 2 товаров параметризированный: \"{0}\"")
+    @DisplayName("Поиск нескольких товаров.")
+    @ParameterizedTest(name = "Проверка результатов для запроса: \"{0}\"")
     @CsvSource(value = {
             "EYNOA| Hoya Nulux EYNOA",
             "Kids| Hoya Hilux Kids"
@@ -101,7 +101,7 @@ public class itigrisBasicTests extends TestBase {
     // не работает поиск по брендам Enni Marco и Enni Marco Emilia
     // если наименование товара содержит > 1 слова
     @Tag("marketTests")
-    @DisplayName("Поиск по части наименования")
+    @DisplayName("Поиск по части наименования.")
     @ParameterizedTest(name = "Проверка результатов для запроса: \"{0}\"")
     @CsvSource(value = {
             "Enni|Enni Marco 06-061", //done
@@ -113,7 +113,7 @@ public class itigrisBasicTests extends TestBase {
         $("#frames-page").shouldHave(text("Каталог оправ"));
         $("input[placeholder='Поиск по названию']").setValue(testData).pressEnter();
         alertWindowMethod();
-        sleep(5000);
+        sleep(2000);
         $$("#container").find(text(expectedText)).shouldBe(visible);
     }
     @Disabled
