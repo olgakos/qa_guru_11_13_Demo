@@ -12,7 +12,6 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Проверка элементов публичной части сайта")
 public class itigrisBasicTests extends TestBase {
