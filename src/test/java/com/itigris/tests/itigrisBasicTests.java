@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.*;
 @DisplayName("Проверка элементов публичной части сайта")
 public class itigrisBasicTests extends TestBase {
 
-    //todo:
+    //todo
     // Фактический результат: В футере itigris.com стоит 2020 год.
     // Ожидаемый результат: 2022
     @Tag("siteTests")
@@ -75,13 +75,13 @@ public class itigrisBasicTests extends TestBase {
         $("#frames-page").shouldHave(text("Каталог оправ"));
         $("input[placeholder='Поиск по названию']").setValue("Fixiki 7111").pressEnter();
         alertWindowMethod();
-        sleep(3000);
+        sleep(5000);
         $$(".items-wrap").find(text("Fixiki F7111")).shouldBe(visible);
     }
 
     @Tag("marketTests")
     @DisplayName("Поиск 2 товаров")
-    @ParameterizedTest(name = "Поиск 2 товаров (параметризированный): \"{0}\"")
+    @ParameterizedTest(name = "Поиск 2 товаров параметризированный: \"{0}\"")
     @CsvSource(value = {
             "EYNOA| Hoya Nulux EYNOA",
             "Kids| Hoya Hilux Kids"
@@ -95,7 +95,8 @@ public class itigrisBasicTests extends TestBase {
         $$("#container").find(text(expectedText)).shouldBe(visible);
     }
 
-    //todo:
+    //todo
+    // Фактический результат:
     // На странице "Каталог оправ"
     // не работает поиск по брендам Enni Marco и Enni Marco Emilia
     // если наименование товара содержит > 1 слова
@@ -107,12 +108,12 @@ public class itigrisBasicTests extends TestBase {
             "Enni Marco|Enni Marco 06-061", //fail
             "Enni Marco 06-061|Enni Marco 06-061" //fail
     }, delimiter = '|')
-    void searchGlassesFramesTestFails(String testData, String expectedText) {
+    void searchGlassesFramesTest(String testData, String expectedText) {
         Selenide.open("https://market.itigris.ru/catalog/glasses-frames");
         $("#frames-page").shouldHave(text("Каталог оправ"));
         $("input[placeholder='Поиск по названию']").setValue(testData).pressEnter();
         alertWindowMethod();
-        sleep(3000);
+        sleep(5000);
         $$("#container").find(text(expectedText)).shouldBe(visible);
     }
     @Disabled

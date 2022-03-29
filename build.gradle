@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-def selenideVersion = '6.3.4',
+def selenideVersion = '6.3.5',
     junitVersion = '5.8.2',
     slf4jVersion = '1.7.36',
     allureVersion = "2.17.3"
@@ -64,12 +64,14 @@ tasks.withType(Test) {
     }
 }
 
+/*
 //@Tag тесты regress
 task regress_tests(type: Test) {
     useJUnitPlatform{
         includeTags "regress"
     }
 }
+ */
 
 //@Tag тесты для раздела Маркет
 task market_tests(type: Test) {
@@ -84,6 +86,3 @@ task site_tests(type: Test) {
         includeTags "siteTests"
     }
 }
-
-
-
