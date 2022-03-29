@@ -40,11 +40,3 @@ target/
 .vscode
 /gradlew
 /gradlew.bat
-
-# fix2
-buildOutputCleanup.lock/
-checksums.lock/
-executionHistory.bin/
-executionHistory.lock/
-fileHashes.bin/
-fileHashes.lock/
