@@ -75,6 +75,7 @@ public class itigrisBasicTests extends TestBase {
         $("#frames-page").shouldHave(text("Каталог оправ"));
         $("input[placeholder='Поиск по названию']").setValue("Fixiki 7111").pressEnter();
         alertWindowMethod();
+        sleep(3000);
         $$(".items-wrap").find(text("Fixiki F7111")).shouldBe(visible);
     }
 
@@ -99,7 +100,7 @@ public class itigrisBasicTests extends TestBase {
     // не работает поиск по брендам Enni Marco и Enni Marco Emilia
     // если наименование товара содержит > 1 слова
     @Tag("marketTests")
-    //@DisplayName("Поиск (параметризированный) по части названия (fails)")
+    @DisplayName("Поиск по части наименования")
     @ParameterizedTest(name = "Проверка результатов для запроса: \"{0}\"")
     @CsvSource(value = {
             "Enni|Enni Marco 06-061", //done
@@ -111,6 +112,7 @@ public class itigrisBasicTests extends TestBase {
         $("#frames-page").shouldHave(text("Каталог оправ"));
         $("input[placeholder='Поиск по названию']").setValue(testData).pressEnter();
         alertWindowMethod();
+        sleep(3000);
         $$("#container").find(text(expectedText)).shouldBe(visible);
     }
     @Disabled
