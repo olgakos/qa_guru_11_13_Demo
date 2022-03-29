@@ -17,14 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("Проверка элементов публичной части сайта")
 public class itigrisBasicTests extends TestBase {
 
-    //todo Фактический результат: В футере itigris.com стоит 2020 год. Ожидаемый результат: 2022
+    //todo:
+    // Фактический результат: В футере itigris.com стоит 2020 год.
+    // Ожидаемый результат: 2022
     @Tag("siteTests")
     @DisplayName("Проверка текста на странице Team")
     @Test
     void searshTextElement() {
         open("/team");
         $("#header-nav").shouldHave(text("ITIGRIS"));
-        //$(byText("тратата")).shouldBe(visible); //negative test
         $(byText("Meet Our Team")).shouldBe(visible);
         $(".my-6").shouldHave(text("Michael Khurgin"));
         $(By.linkText("info@itigris.com")).isDisplayed();
