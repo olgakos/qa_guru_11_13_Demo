@@ -6,8 +6,8 @@
 - [Реализованные проверки](#watermelon-Реализованные-проверки)
 - [Запуск из терминала](#watermelon-Запуск-тестов-из-терминала)
 - [Запуск тестов в Jenkins](#watermelon-Запуск-тестов-в-Jenkins)
-- [Видео прохождения тестов](#watermelon-Видео-прохождения-тестов)
 - [Allure отчет](#bellhop_bell-Allure-отчет)
+- [Видео прохождения тестов](#watermelon-Видео-прохождения-тестов)
 - [Отчет в Telegram](#bellhop_bell-Отчет-в-Telegram)
 
 
@@ -38,16 +38,14 @@
 
 ## :watermelon: Реализованные проверки 
 Примеры UI тестов:
-✓ Проверка текста на странице Team
-✓ Проверка названия в карточке кейса Essilor
-✓ Заполнить форму обратной связи
-✓ Проверка поисковых результатов для запроса "EYNOA"
-✓ Проверка поисковых результатов для запроса "Kids"
--  Поиск товара по названию из одного слова: Marco (done) ????
--  Поиск товара по составному названию (fails) Проверка поисковых результатов для запроса "Enni Marco 11-901"
--  Поиск товара по составному названию (fails) Проверка поисковых результатов для запроса "Enni Marco"
--  Поиск товара по составному названию (fails) Проверка поисковых результатов для запроса "Marco"
--  [✓] Пример пропущенного теста (Skipped)
+- [✓] Проверка текстов на странице Team
+- [✓] Проверка названия в карточке кейса Essilor
+- [✓] Заполнение формы обратной связи
+- [✓] Закрытие всплывающего окна
+- [✓] Поиск 1 товара
+- [✓] Поиск нескольких товаров. Проверка результатов для запроса (2)
+- [х] Поиск по части наименования. Проверка результатов для запроса (3)
+- [✓] Пример пропущенного теста (Skipped)
 
 ## :watermelon: Запуск тестов из терминала
 Шаги:
@@ -88,15 +86,9 @@ test
 - `COMMENT` - ваш текстовой комментарий 
 - `BUILD_URL` - автоматическая ссылка на детализированнаый отчет о сборке
 
-## :watermelon: Видео прохождения тестов
-К каждому тесту в отчете прилагается автоматически сгенерирвоанное видео. Пример видео:
-<p align="center">
-<img title="Видео прохождения тестов на Selenoid" src="images/screens/Screenshot_ХХХ.png">
-</p>
-
- ## :bellhop_bell: Allure отчет 
+## :bellhop_bell: Allure отчет 
 После того как тесты завершлись, можно получить визуальный Allure отчет.
-Способ 1: Найти ссылку в среде разработки IDEA (в папке Allure Serve)
+Способ 1: Сформирвоать отчет средсвтами IJ IDEA (Allure Serve)
 Способ 2: 
 1. Выполнить сборку в Jenkins
 2. Убедиться, что в блоке История сборок (напротив номера #) появился желтый значок Allure Report
@@ -114,32 +106,24 @@ test
 
 ###### Главный экран отчета (Owerwiev)
 <p align="center">
-<img title="Allure Graphics" src="images/screens/Screenshot_ХХХ.png">
+<img title="Allure Graphics" src="images/screens/ScreenshotAllure1.jpg">
 </p>
 
 ###### Страница с проведенными тестами (Suites)
 <p align="center">
-<img title="Allure Graphics" src="images/screens/Screenshot_ХХХХ.png">
+<img title="Allure Graphics" src="images/screens/ScreenshotAllure2.jpg">
+</p>
+
+## :watermelon: Видео прохождения тестов
+К каждому тесту (в отчете) прилагается автоматически сгенерирвоанное видео. Пример видео:
+<p align="center">
+  <img title="Selenoid Video" src="images/screens/VideoExample.gif" alt="video">
 </p>
 
 ## :bellhop_bell: Отчет в Telegram
 После завершения сборки специальный Telegram-бот отправляет сообщение с отчетом о прогоне тестов.
-Чтобы видеть сообщения от бота, (временно) вступите в телеграм-группу `OlgaKos Bot_Group`
+Чтобы видеть сообщения от бота, вступите (временно) в телеграм-группу `OlgaKos Bot_Group`
 
 <p align="center">
-<img title="Telegram Bot" src="images/screens/Screenshot_ХХХ.png">
+<img title="Telegram Bot" src="images/screens/ScreenshotTelegram.jpg">
 </p>
-
-----------------------------------
-Here is a simple footnote[^1].
-
-A footnote can also have multiple lines[^2].  
-
-You can also use words, to fit your writing style more closely[^note].
-
-[^1]: My reference.
-[^2]: Every new line should be prefixed with 2 spaces.  
-  This allows you to have a footnote with multiple lines.
-[^note]:
-    Named footnotes will still render with numbers instead of the text but allow easier identification and linking.  
-    This footnote also has been made with a different syntax using 4 spaces for new lines.
