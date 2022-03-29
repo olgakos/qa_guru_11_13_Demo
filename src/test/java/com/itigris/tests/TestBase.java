@@ -21,7 +21,7 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.browserSize = size;
         Configuration.browser = browser;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
@@ -43,17 +43,10 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
     }
-/*
-     @AfterAll
-    void afterAll() {
+
+    @AfterAll
+    public static void afterAll() {
         closeWebDriver();
     }
-    */
-
-    @AfterEach
-    void afterEach() {
-        closeWebDriver();
-    }
-
 
 }
