@@ -20,7 +20,7 @@ public class itigrisBasicTests extends TestBase {
     // Фактический результат: В футере itigris.com стоит 2020 год.
     // Ожидаемый результат: 2022
     @Tag("siteTests")
-    @DisplayName("Проверка текста на странице Team")
+    @DisplayName("Проверка текстов на странице Team")
     @Test
     void searshTextElement() {
         open("/team");
@@ -59,7 +59,7 @@ public class itigrisBasicTests extends TestBase {
     }
 
     @Tag("marketTests")
-    @DisplayName("Закрыть всплывающее окно")
+    @DisplayName("Закрытие всплывающего окна")
     @Test
     void closeAlert() {
         Selenide.open("https://market.itigris.ru/catalog/glasses-frames");
@@ -68,7 +68,7 @@ public class itigrisBasicTests extends TestBase {
     }
 
     @Tag("marketTests")
-    @DisplayName("Поиск товара: Fixiki F7111")
+    @DisplayName("Поиск 1 товара")
     @Test
     void searchGlassesFramesTestDone() {
         Selenide.open("https://market.itigris.ru/catalog/glasses-frames");
@@ -99,10 +99,9 @@ public class itigrisBasicTests extends TestBase {
     // не работает поиск по брендам Enni Marco и Enni Marco Emilia
     // если наименование товара содержит > 1 слова
     @Tag("marketTests")
-    @DisplayName("Поиск (параметризированный) товара по части названия (fails)")
-    @ParameterizedTest(name = "Проверка поисковых результатов для запроса: \"{0}\"")
+    //@DisplayName("Поиск (параметризированный) по части названия (fails)")
+    @ParameterizedTest(name = "Проверка результатов для запроса: \"{0}\"")
     @CsvSource(value = {
-            "Marco|Enni Marco 06-061", //done
             "Enni|Enni Marco 06-061", //done
             "Enni Marco|Enni Marco 06-061", //fail
             "Enni Marco 06-061|Enni Marco 06-061" //fail
@@ -114,7 +113,6 @@ public class itigrisBasicTests extends TestBase {
         alertWindowMethod();
         $$("#container").find(text(expectedText)).shouldBe(visible);
     }
-
     @Disabled
     @DisplayName("Пример пропущенного теста")
     @Test
