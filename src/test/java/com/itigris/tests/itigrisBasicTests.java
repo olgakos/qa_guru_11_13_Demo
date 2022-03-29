@@ -14,26 +14,13 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@DisplayName("Проверка элементов публичной части сайтов компании")
-public class itigrisBasicTests extends BaseTest {
-
-    /*
-    @BeforeEach
-    void preconditionBrowser() {
-        baseUrl = "https://itigris.com";
-        browserSize = "1920x1080";
-    }
-
-    @AfterEach
-    void closeBrowser() {
-        Selenide.closeWebDriver();
-    }
-
-*/
+@DisplayName("Проверка элементов публичной части сайта")
+public class itigrisBasicTests extends TestBase {
 
     //todo Фактический результат: В футере itigris.com стоит 2020 год. Ожидаемый результат: 2022
-    @Test
+    @Tag("siteTests")
     @DisplayName("Проверка текста на странице Team")
+    @Test
     void searshTextElement() {
         open("/team");
         $("#header-nav").shouldHave(text("ITIGRIS"));
@@ -46,8 +33,9 @@ public class itigrisBasicTests extends BaseTest {
         $$("#the-footer").find(text("© 2020 ITigris Ltd.")).shouldBe(visible);
     }
 
-    @Test
+    @Tag("siteTests")
     @DisplayName("Проверка названия в карточке кейса Essilor")
+    @Test
     void searchCasesTest() {
         open("/cases");
         $(byText("Our Success Stories")).isDisplayed();
@@ -56,50 +44,9 @@ public class itigrisBasicTests extends BaseTest {
         $$("body").find(text("Essilor")).shouldBe(visible);
     }
 
-    @ParameterizedTest(name = "Проверка поисковых результатов для запроса \"{0}\"")
-    @CsvSource(value = {
-            "EYNOA| Hoya Nulux EYNOA",
-            "Kids| Hoya Hilux Kids"
-    }, delimiter = '|')
-    void searchLeansesTest(String testData, String expectedText) {
-        Selenide.open("https://market.itigris.ru/catalog/lenses");
-        $("body").shouldHave(text("Каталог очковых линз"));
-        alertWindowMethod(); //алерт-окно
-        $("input[placeholder='Поиск по названию']").setValue(testData).pressEnter();
-        $(".filters-tags").shouldHave(text("Поиск по названию: " + testData));
-        $$("#container").find(text(expectedText)).shouldBe(visible);
-    }
-
-    //todo На странице "Каталог оправ" не работает поиск по наименованию товара, если наименование из нескольких слов
-    @DisplayName("Поиск товара по составному названию (fails)")
-    @ParameterizedTest(name = "Проверка поисковых результатов для запроса \"{0}\"")
-    @CsvSource(value = {
-            "Marco|Enni Marco 11-901", //done
-            "Enni Marco|Enni Marco 11-901", //fail
-            "Enni Marco 11-901|Enni Marco 11-901" //fail
-    }, delimiter = '|')
-    void searchGlassesFramesTestFails(String testData, String expectedText) {
-        Selenide.open("https://market.itigris.ru/catalog/glasses-frames");
-        $("#frames-page").shouldHave(text("Каталог оправ"));
-        $("input[placeholder='Поиск по названию']").setValue(testData).pressEnter();
-        alertWindowMethod(); //алерт-окно
-        $$("#container").find(text(expectedText)).shouldBe(visible);
-    }
-
+    @Tag("siteTests")
+    @DisplayName("Заполнение формы обратной связи")
     @Test
-    @DisplayName("Поиск товара по названию из одного слова: Marco (done)")
-    void searchGlassesFramesTestDone() {
-        Selenide.open("https://market.itigris.ru/catalog/glasses-frames");
-        $("#frames-page").shouldHave(text("Каталог оправ"));
-        $("input[placeholder='Поиск по названию']").setValue("Marco").pressEnter();
-        alertWindowMethod(); //алерт-окно
-        $$(".items-wrap").find(text("Enni Marco 11-901")).shouldBe(visible);
-        //$("body").shouldHave(text("Enni Marco 11-901")); //вариант
-        //$$(".items-wrap").find(text("Enni Marco 11-901")).shouldBe(visible);
-    }
-
-    @Test
-    @DisplayName("Заполнить форму обратной связи")
     void fillFormTest() {
         open("/contact-us");
         $("input[placeholder='Enter your full name']").setValue("Olga Kos");
@@ -111,27 +58,73 @@ public class itigrisBasicTests extends BaseTest {
         sleep(3000);
     }
 
+    @Tag("marketTests")
+    @DisplayName("Закрыть всплывающее окно")
+    @Test
+    void closeAlert() {
+        Selenide.open("https://market.itigris.ru/catalog/glasses-frames");
+        $("#frames-page").shouldHave(text("Каталог оправ"));
+        alertWindowMethod();
+    }
+
+    @Tag("marketTests")
+    @DisplayName("Поиск товара: Fixiki F7111")
+    @Test
+    void searchGlassesFramesTestDone() {
+        Selenide.open("https://market.itigris.ru/catalog/glasses-frames");
+        $("#frames-page").shouldHave(text("Каталог оправ"));
+        $("input[placeholder='Поиск по названию']").setValue("Fixiki 7111").pressEnter();
+        alertWindowMethod();
+        $$(".items-wrap").find(text("Fixiki F7111")).shouldBe(visible);
+    }
+
+    @Tag("marketTests")
+    @DisplayName("Поиск 2 товаров")
+    @ParameterizedTest(name = "Поиск 2 товаров (параметризированный): \"{0}\"")
+    @CsvSource(value = {
+            "EYNOA| Hoya Nulux EYNOA",
+            "Kids| Hoya Hilux Kids"
+    }, delimiter = '|')
+    void searchLeansesTest(String testData, String expectedText) {
+        Selenide.open("https://market.itigris.ru/catalog/lenses");
+        $("body").shouldHave(text("Каталог очковых линз"));
+        alertWindowMethod();
+        $("input[placeholder='Поиск по названию']").setValue(testData).pressEnter();
+        $(".filters-tags").shouldHave(text("Поиск по названию: " + testData));
+        $$("#container").find(text(expectedText)).shouldBe(visible);
+    }
+
+    //todo:
+    // На странице "Каталог оправ"
+    // не работает поиск по брендам Enni Marco и Enni Marco Emilia
+    // если наименование товара содержит > 1 слова
+    @Tag("marketTests")
+    @DisplayName("Поиск (параметризированный) товара по части названия (fails)")
+    @ParameterizedTest(name = "Проверка поисковых результатов для запроса: \"{0}\"")
+    @CsvSource(value = {
+            "Marco|Enni Marco 06-061", //done
+            "Enni|Enni Marco 06-061", //done
+            "Enni Marco|Enni Marco 06-061", //fail
+            "Enni Marco 06-061|Enni Marco 06-061" //fail
+    }, delimiter = '|')
+    void searchGlassesFramesTestFails(String testData, String expectedText) {
+        Selenide.open("https://market.itigris.ru/catalog/glasses-frames");
+        $("#frames-page").shouldHave(text("Каталог оправ"));
+        $("input[placeholder='Поиск по названию']").setValue(testData).pressEnter();
+        alertWindowMethod();
+        $$("#container").find(text(expectedText)).shouldBe(visible);
+    }
+
     @Disabled
-    @Tag("regress")
-    @DisplayName("Это пропущенный тест")
+    @DisplayName("Пример пропущенного теста")
     @Test
     public void skippedTest() {
         System.out.println("Тест пропущен");
     }
 
-    @Tag("regress")
-    @DisplayName("Это пропущенный тест")
-    @Test
-    public void failedTest() {
-        assertTrue(false);
-    }
-
-
     void alertWindowMethod() {
-        //ЕСЛИ есть алерт:
         if ($x("//h3[contains(.,'ПОЛИТИКА БЕЗОПАСНОСТИ')]").is(exist)) {
-            $("button[type='button']").pressEnter();
-            //$(".closeAnnounce").click();
+            $(".el-button--danger").shouldHave(text("Принять")).click();
         }
     }
 }

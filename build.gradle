@@ -64,9 +64,26 @@ tasks.withType(Test) {
     }
 }
 
-//Регресс
+//@Tag тесты regress
 task regress_tests(type: Test) {
     useJUnitPlatform{
         includeTags "regress"
     }
 }
+
+//@Tag тесты для раздела Маркет
+task market_tests(type: Test) {
+    useJUnitPlatform{
+        includeTags "marketTests"
+    }
+}
+
+//тесты для раздела Сайт Компании
+task site_tests(type: Test) {
+    useJUnitPlatform{
+        includeTags "siteTests"
+    }
+}
+
+
+
